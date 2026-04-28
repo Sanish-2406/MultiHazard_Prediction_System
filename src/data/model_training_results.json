@@ -1,0 +1,73 @@
+{
+    "classes": [
+        "Low",
+        "Medium",
+        "High"
+    ],
+    "featureImportance": {
+        "rainfall_mm": 0.2085,
+        "antecedent_rainfall_mm": 0.1238,
+        "humidity_pct": 0.1171,
+        "soil_moisture_pct": 0.1047,
+        "slope_deg": 0.0983,
+        "pressure_hpa": 0.0722,
+        "distance_to_river_km": 0.0629,
+        "vegetation_index": 0.0448,
+        "wind_speed_ms": 0.0431,
+        "temperature_c": 0.0427,
+        "drainage_density": 0.0427,
+        "elevation_m": 0.0392
+    },
+    "models": {
+        "Random Forest": {
+            "metrics": {
+                "accuracy": 0.8475,
+                "precision": 0.8645,
+                "recall": 0.8475,
+                "f1Score": 0.8275
+            },
+            "confusion": [
+                [
+                    100,
+                    36,
+                    0
+                ],
+                [
+                    7,
+                    238,
+                    0
+                ],
+                [
+                    0,
+                    18,
+                    1
+                ]
+            ]
+        },
+        "XGBoost": {
+            "metrics": {
+                "accuracy": 0.8675,
+                "precision": 0.8748,
+                "recall": 0.8675,
+                "f1Score": 0.8607
+            },
+            "confusion": [
+                [
+                    106,
+                    30,
+                    0
+                ],
+                [
+                    11,
+                    234,
+                    0
+                ],
+                [
+                    0,
+                    12,
+                    7
+                ]
+            ]
+        }
+    }
+}

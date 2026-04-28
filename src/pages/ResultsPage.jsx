@@ -36,7 +36,7 @@ export default function ResultsPage({ trainingResults }) {
 
   const { summary, rainfallVsRisk, models, featureImportance, featureStats } = trainingResults;
   const rf = models.randomForest;
-  const lr = models.logisticRegression;
+  const xgb = models.xgboost;
 
   /* ──────── Chart Data ──────── */
 
@@ -114,8 +114,8 @@ export default function ResultsPage({ trainingResults }) {
         borderRadius: 4,
       },
       {
-        label: 'Logistic Regression',
-        data: [lr.metrics.accuracy, lr.metrics.precision, lr.metrics.recall, lr.metrics.f1Score].map((v) => +(v * 100).toFixed(1)),
+        label: 'XGBoost',
+        data: [xgb.metrics.accuracy, xgb.metrics.precision, xgb.metrics.recall, xgb.metrics.f1Score].map((v) => +(v * 100).toFixed(1)),
         backgroundColor: 'rgba(59, 130, 246, 0.6)',
         borderColor: '#3b82f6',
         borderWidth: 1,
@@ -138,8 +138,8 @@ export default function ResultsPage({ trainingResults }) {
         pointRadius: 2,
       },
       {
-        label: 'Logistic Regression',
-        data: lr.history.map((h) => +(h.accuracy * 100).toFixed(1)),
+        label: 'XGBoost',
+        data: xgb.history.map((h) => +(h.accuracy * 100).toFixed(1)),
         borderColor: '#3b82f6',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
         fill: true,
@@ -297,14 +297,14 @@ export default function ResultsPage({ trainingResults }) {
               <MetricBadge value={rf.metrics.f1Score} label="F1-Score" />
             </div>
           </div>
-          {/* Logistic Regression Metrics */}
-          <div className="model-result-card lr">
-            <h3> Logistic Regression</h3>
+          {/* XGBoost Metrics */}
+          <div className="model-result-card xgb">
+            <h3> XGBoost</h3>
             <div className="metrics-grid">
-              <MetricBadge value={lr.metrics.accuracy} label="Accuracy" />
-              <MetricBadge value={lr.metrics.precision} label="Precision" />
-              <MetricBadge value={lr.metrics.recall} label="Recall" />
-              <MetricBadge value={lr.metrics.f1Score} label="F1-Score" />
+              <MetricBadge value={xgb.metrics.accuracy} label="Accuracy" />
+              <MetricBadge value={xgb.metrics.precision} label="Precision" />
+              <MetricBadge value={xgb.metrics.recall} label="Recall" />
+              <MetricBadge value={xgb.metrics.f1Score} label="F1-Score" />
             </div>
           </div>
         </div>
@@ -336,12 +336,12 @@ export default function ResultsPage({ trainingResults }) {
                 <td>{(rf.metrics.f1Score * 100).toFixed(1)}%</td>
                 <td><span className="verdict-badge best"> Best</span></td>
               </tr>
-              <tr className="lr-row">
-                <td><strong> Logistic Regression</strong></td>
-                <td>{(lr.metrics.accuracy * 100).toFixed(1)}%</td>
-                <td>{(lr.metrics.precision * 100).toFixed(1)}%</td>
-                <td>{(lr.metrics.recall * 100).toFixed(1)}%</td>
-                <td>{(lr.metrics.f1Score * 100).toFixed(1)}%</td>
+              <tr className="xgb-row">
+                <td><strong> XGBoost</strong></td>
+                <td>{(xgb.metrics.accuracy * 100).toFixed(1)}%</td>
+                <td>{(xgb.metrics.precision * 100).toFixed(1)}%</td>
+                <td>{(xgb.metrics.recall * 100).toFixed(1)}%</td>
+                <td>{(xgb.metrics.f1Score * 100).toFixed(1)}%</td>
                 <td><span className="verdict-badge baseline">Baseline</span></td>
               </tr>
             </tbody>
@@ -356,7 +356,7 @@ export default function ResultsPage({ trainingResults }) {
         </div>
         <div className="results-grid-2">
           <ConfusionMatrix confusion={rf.confusion} title=" Random Forest" />
-          <ConfusionMatrix confusion={lr.confusion} title=" Logistic Regression" />
+          <ConfusionMatrix confusion={xgb.confusion} title=" XGBoost" />
         </div>
       </div>
 

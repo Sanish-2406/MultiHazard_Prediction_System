@@ -46,7 +46,7 @@ export default function TrainingPage({ onTrainingComplete }) {
               { icon: '', label: 'Preprocessing', desc: 'Normalization, encoding, feature scaling' },
               { icon: '️', label: 'Feature Engineering', desc: '12 features: rainfall, slope, soil moisture, etc.' },
               { icon: '', label: 'Random Forest', desc: 'Ensemble model with 100 decision trees' },
-              { icon: '', label: 'Logistic Regression', desc: 'Baseline linear classification model' },
+              { icon: '🚀', label: 'XGBoost', desc: 'Extreme Gradient Boosting model for high-accuracy detection' },
               { icon: '', label: 'Evaluation', desc: 'Accuracy, precision, recall, F1, confusion matrix' },
             ].map((step, i) => (
               <div key={i} className={`pipeline-step ${progress && progress.step > i ? 'complete' : ''} ${progress && progress.step === i + 1 ? 'active' : ''}`}>
@@ -75,12 +75,12 @@ export default function TrainingPage({ onTrainingComplete }) {
           </div>
           <div className="card model-card">
             <div className="model-card-icon"></div>
-            <h3>Logistic Regression</h3>
-            <p>Baseline linear model using softmax for multi-class probability estimation</p>
+            <h3>XGBoost</h3>
+            <p>Advanced ensemble model using gradient boosting frameworks for maximal predictive accuracy</p>
             <div className="model-card-specs">
-              <span>L2 Penalty</span>
-              <span>C=1.0</span>
-              <span>Max Iter: 500</span>
+              <span>Learning Rate: 0.05</span>
+              <span>Max Depth: 8</span>
+              <span>Subsample: 0.8</span>
             </div>
           </div>
         </div>
